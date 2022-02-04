@@ -4,7 +4,7 @@ services:
     build:
       args:
         user: insure-bro
-        uid: 1000ls
+        uid: 1000
       context: ./
       dockerfile: ./.docker/Dockerfile
     image: insure-bro
