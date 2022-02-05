@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property string $name
+ * @property string $firstname
+ * @property string $lastname
+ * @property string $patronymic
  * @property string $email
  * @property string $phone
- * @property string $massage
+ * @property string $message
  * @property null|Carbon $created_at
  * @property null|Carbon $updated_at
  */

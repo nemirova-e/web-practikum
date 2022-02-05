@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $rate
  * @property string $months
+ * @property int $category_id
+ * @property int $insurance_company_id
  * @property null|Carbon $created_at
  * @property null|Carbon $updated_at
  */
