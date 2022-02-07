@@ -29,6 +29,6 @@ docker-compose up -d
 ```
 Чтобы зайти на сайт, нужно открыть в браузере 
 ```sh
- http://localhost:8000/zastrahui-bratuhu
+ http://localhost:8000/
 ```
 
