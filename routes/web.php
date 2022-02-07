@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/zastrahui-bratuhu', function () {
+Route::get('/', function () {
     return view('startpage');
 });
 
+Route::get('/lk', function () {
+    return view('lk');
+})->middleware(['auth'])->name('lk');
+
+require __DIR__.'/auth.php';

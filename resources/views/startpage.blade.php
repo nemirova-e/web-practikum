@@ -10,5 +10,19 @@
 <body>
 <h1>Застрахуй братуху! </h1>
 <h2>Маркетплейс страховых компаний для каждого</h2>
+@guest
+    @if(Route::has('login'))
+        <a href="{{ route('login') }}">Войти в личный кабинет</a>
+    @endif
+    <br>
+    @if(Route::has('register'))
+        <a href="{{ route('register') }}">Зарегистрироваться</a>
+    @endif
+@endguest
+@auth
+    @if(Route::has('lk'))
+        <a href="{{ route('lk') }}">Личный кабинет</a>
+    @endif
+@endauth
 </body>
 </html>
