@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\UserResponse;
 
-class UsersResponsesTableSeeder extends Seeder
+class UsersResponsesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,8 @@ class UsersResponsesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        UserResponse::factory()
+            ->count(10)
+            ->create();
     }
 }
