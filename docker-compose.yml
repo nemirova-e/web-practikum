@@ -30,6 +30,7 @@ services:
 
   db:
     image: mariadb
+    container_name: insure-bro-db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -42,22 +43,15 @@ services:
       - 3306:3306
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
-    container_name: elasticsearch
+    image: elasticsearch:7.17.0
+    container_name: insure-bro-elasticsearch
     environment:
-      - cluster.name=supercluster
+      - discovery.type=single-node
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms8g -Xmx8g"
-      - "discovery.zen.ping.unicast.hosts=10.11.12.13:9300,10.11.12.13:9301,10.11.12.13:9302"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
     volumes:
       - es-data:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
-      - 9300:9300
     networks:
       - insure-bro-network
 
