@@ -20,7 +20,7 @@ class ProductFactory extends Factory
     {
             return [
                 'name' =>  'Пакет' . ' ' . $this->faker->sentence(rand(1,2)),
-                'rate' => $this->faker-> numberBetween(2,15),
+                'rate' =>  $this->faker-> numberBetween(2,15),
                 'months' => $this->faker-> numberBetween(6,15),
                 'category_id' => $this->faker->numberBetween(1,3),
                 'insurance_company_id' => $this->faker->numberBetween(1,7),

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Search\Searchable;
 
 
 /**
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use Searchable;
     use HasFactory;
 
     protected static function newFactory()
