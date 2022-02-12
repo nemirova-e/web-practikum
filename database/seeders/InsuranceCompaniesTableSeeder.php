@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class InsuranceCompaniesTableSeeder extends Seeder
 {
@@ -28,10 +29,9 @@ class InsuranceCompaniesTableSeeder extends Seeder
 
             foreach ($insurance_companies as $insurance_company) {
                 DB::table('insurance_companies')->insert([
-                    'name' => $insurance_company
+                    'name' => $insurance_company,
+                    'email' => Str::random(10).'@gmail.com',
                 ]);
             }
-
-
     }
 }
