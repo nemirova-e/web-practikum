@@ -10,22 +10,10 @@ use App\Models\UserResponse;
 
 class UserResponseController extends Controller
 {
-//    public function submit(UserResponseRequest $req) {
-//
-//        $userResponse = new UserResponse();
-//
-//        $userResponse->firstname = $req->input('firstname');
-//        $userResponse->lastname = $req->input('lastname');
-//        $userResponse->patronymic = $req->input('patronymic');
-//        $userResponse->email = $req->input('email');
-//        $userResponse->phone = $req->input('phone');
-//        $userResponse->message = $req->input('message');
-//
-//
-//        $userResponse->save();
-//
-//        return redirect()->route('startpage');
-
+    public function submissionForm()
+    {
+        return view('submission_form');
+    }
 
     }
 

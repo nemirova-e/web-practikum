@@ -7,6 +7,8 @@ use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Search\Searchable;
+use App\Models\InsuranceCompany;
+use App\Models\Category;
 
 
 /**
@@ -28,5 +30,15 @@ class Product extends Model
     protected static function newFactory()
     {
         return ProductFactory::new();
+    }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
+    public function company()
+    {
+        return $this->hasOne(InsuranceCompany::class, 'id', 'insurance_company_id');
     }
 }

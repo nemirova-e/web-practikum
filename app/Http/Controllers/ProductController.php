@@ -10,26 +10,47 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use App\Models\InsuranceCompany;
+use App\Models\Category;
+
 
 class ProductController extends Controller
 {
-//    public function index()
-//    {
-//        $products = Product::paginate(3);
-//
-//        return view('startpage', ['products' => $products]);
-//    }
-
-    public function search(ProductsRepository $repository, Request $request)
+    public function search(Request $request, ProductsRepository $repository)
     {
-        $q = $request->get('q');
-        if (!empty($q)) {
-            $products = $repository->search($q);
+        if ($request->get('q')) {
+            $productsQuery = $repository->search($request->get('q'));
         } else {
-            $products = Product::all();
+            $productsQuery = Product::query();
         }
 
+        if ($request->get('insurance_company_id')) {
+            $productsQuery = $productsQuery->where('insurance_company_id', (int)$request->get('insurance_company_id'));
+        }
+        if ($request->get('category_id')) {
+            $productsQuery = $productsQuery->where('category_id', (int)$request->get('category_id'));
+        }
+        if ($request->get('rateMin')) {
+            $productsQuery = $productsQuery->where('rate', '>=', (int)$request->get('rateMin'));
+        }
+        if ($request->get('rateMax')) {
+            $productsQuery = $productsQuery->where('rate', '<=', (int)$request->get('rateMax'));
+        }
+        if ($request->get('monthsMin')) {
+            $productsQuery = $productsQuery->where('months', '>=', (int)$request->get('monthsMin'));
+        }
+        if ($request->get('monthsMax')) {
+            $productsQuery = $productsQuery->where('months', '<=', (int)$request->get('monthsMax'));
+        }
 
-        return view('startpage', ['products' => $products]);
+        $products = $productsQuery->with(['category', 'company'])->get();
+        $insurance_companies = InsuranceCompany::all();
+        $categories = Category::all();
+
+        return view('startpage', [
+            'products' => $products,
+            'insurance_companies' => $insurance_companies,
+            'categories' => $categories,
+        ]);
     }
 }

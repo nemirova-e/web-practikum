@@ -3,9 +3,9 @@
 
 namespace App\Products;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 
 interface ProductsRepository
 {
-    public function search(string $query = ''): Collection;
+    public function search(string $query = ''): Builder;
 }

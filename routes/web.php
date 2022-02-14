@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', [\App\Http\Controllers\ProductController::class, 'index']);
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'search'])->name('search');
 
 Route::get('/lk', function () {
@@ -21,3 +20,6 @@ Route::get('/lk', function () {
 })->middleware(['auth'])->name('lk');
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/submission_form', [\App\Http\Controllers\UserResponseController::class, 'submissionForm'])->name('submissionForm');
