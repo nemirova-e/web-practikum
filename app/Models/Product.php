@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Search\Searchable;
 use App\Models\InsuranceCompany;
 use App\Models\Category;
+use Pricecurrent\LaravelEloquentFilters\Filterable;
 
 
 /**
@@ -26,6 +27,7 @@ class Product extends Model
 {
     use Searchable;
     use HasFactory;
+    use Filterable;
 
     protected static function newFactory()
     {

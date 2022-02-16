@@ -12,7 +12,6 @@ class EloquentRepository implements ProductsRepository
     public function search(string $query = ''): Builder
     {
         return Product::query()
-            ->where('name', 'like', "%{$query}%")
-            ->get();
+            ->where('name', 'like', "%{$query}%");
     }
 }

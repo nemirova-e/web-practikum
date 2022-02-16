@@ -9,9 +9,16 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
 use App\Models\InsuranceCompany;
 use App\Models\Category;
+use App\Filters\Models\Product\CategoryFilter;
+use App\Filters\Models\Product\InsuranceCompanyFilter;
+use Pricecurrent\LaravelEloquentFilters\EloquentFilters;
+use App\Filters\Models\Product\RateMinFilter;
+use App\Filters\Models\Product\RateMaxFilter;
+use App\Filters\Models\Product\MonthsMinFilter;
+use App\Filters\Models\Product\MonthsMaxFilter;
+
 
 
 class ProductController extends Controller
@@ -24,26 +31,18 @@ class ProductController extends Controller
             $productsQuery = Product::query();
         }
 
-        if ($request->get('insurance_company_id')) {
-            $productsQuery = $productsQuery->where('insurance_company_id', (int)$request->get('insurance_company_id'));
-        }
-        if ($request->get('category_id')) {
-            $productsQuery = $productsQuery->where('category_id', (int)$request->get('category_id'));
-        }
-        if ($request->get('rateMin')) {
-            $productsQuery = $productsQuery->where('rate', '>=', (int)$request->get('rateMin'));
-        }
-        if ($request->get('rateMax')) {
-            $productsQuery = $productsQuery->where('rate', '<=', (int)$request->get('rateMax'));
-        }
-        if ($request->get('monthsMin')) {
-            $productsQuery = $productsQuery->where('months', '>=', (int)$request->get('monthsMin'));
-        }
-        if ($request->get('monthsMax')) {
-            $productsQuery = $productsQuery->where('months', '<=', (int)$request->get('monthsMax'));
-        }
+        $filters =  EloquentFilters::make([
+            new InsuranceCompanyFilter($request->get('insurance_company_id')),
+            new CategoryFilter($request->get('category_id')),
+            new RateMinFilter($request->get('rateMin')),
+            new RateMaxFilter($request->get('rateMax')),
+            new MonthsMinFilter($request->get('monthsMin')),
+            new MonthsMaxFilter($request->get('monthsMax'))
+        ]);
+        $productsQuery = $productsQuery->filter($filters);
 
-        $products = $productsQuery->with(['category', 'company'])->get();
+
+        $products = $productsQuery->with(['category','company'])->get();
         $insurance_companies = InsuranceCompany::all();
         $categories = Category::all();
 
