@@ -28,4 +28,13 @@ class UserResponse extends Model
     {
         return UserResponseFactory::new();
     }
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
+
+    protected $fillable = [
+        'firstname', 'lastname', 'patronymic', 'phone', 'email', 'message'
+    ];
 }

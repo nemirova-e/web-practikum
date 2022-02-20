@@ -22,4 +22,5 @@ Route::get('/lk', function () {
 require __DIR__.'/auth.php';
 
 
-Route::get('/submission_form', [\App\Http\Controllers\UserResponseController::class, 'submissionForm'])->name('submissionForm');
+Route::get('/submission_form/{product}', [\App\Http\Controllers\ProductController::class, 'submissionForm'])->name('submissionForm');
+Route::post('/send_mail/{product}',[\App\Http\Controllers\ProductController::class,'sendMail'])->name('send_mail');

@@ -14,43 +14,73 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
-                        <div class="col-md-4">
-                            <label>Выбранный пакет страхования</label>
-                            <input type="text" class="form-control">
-                        </div>
+
+                        <tr class="table-info" >
+                            <th>Выбранный продукт:</th>
+                            <td>{{ $product->name }}</td>
+                        </tr>
                         <br>
+                        <tr>
+                            <th>Процентная ставка:</th>
+                            <td>{{ $product->rate }}</td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <th>Количество месяцев:</th>
+                            <td>{{ $product->months }}</td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <th>Категория страхования:</th>
+                            <td>{{ $product->category->name }}</td>
+                        </tr>
+                        <br>
+                        <tr>
+                            <th>Компания:</th>
+                            <td>{{ $product->company->name }}</td>
+                        </tr>
+                        <br>
+                        <br>
+                        <form action="{{route ('send_mail',['product'=>$product])}}" method="post">
                         <div class="col-md-4">
                             <label>Фамилия</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="lastname" class="form-control">
                         </div>
                         <br>
                         <div class="col-md-4">
                             <label>Имя</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="firstname" class="form-control">
                         </div>
                         <br>
                         <div class="col-md-4">
                             <label>Отчество</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="patronymic" class="form-control">
                         </div>
                         <br>
                         <div class="col-md-4">
                             <label>email</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name="email" class="form-control">
                         </div>
                         <br>
                         <div class="col-md-4">
                             <label>Контактный телефон</label>
-                            <input type="text" class="form-control" placeholder="+7">
+                            <input type="text" name="phone" class="form-control" placeholder="+7">
                         </div>
                         <br>
                         <div class="col-md-4">
                             <label>Ваш комментарий</label>
-                            <textarea class="form-control" placeholder="Удобное время для связи"></textarea>
+                            <textarea class="form-control"  name="message" placeholder="Удобное время для связи"></textarea>
                         </div>
                         <br>
-                        <form action="" method="get">
                             <input type="submit" class="btn btn-outline-info" value="Отправить заявку">
+                            @csrf
                         </form>
+
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </x-app-layout>

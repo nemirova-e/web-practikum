@@ -18,6 +18,9 @@ use App\Filters\Models\Product\RateMinFilter;
 use App\Filters\Models\Product\RateMaxFilter;
 use App\Filters\Models\Product\MonthsMinFilter;
 use App\Filters\Models\Product\MonthsMaxFilter;
+use App\Models\UserResponse;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderShipped;
 
 
 
@@ -52,4 +55,24 @@ class ProductController extends Controller
             'categories' => $categories,
         ]);
     }
+
+        public function submissionForm(Product $product) {
+
+        return view('submission_form', [
+            'product' => $product,
+        ]);
+        }
+
+        function sendMail (Product $product, Request $request)
+        {
+            $response = new UserResponse();
+            $response->fill($request->all());
+            $response->product_id = $product->id;
+
+            $response->saveOrFail();
+
+            Mail::to($product->company->email)->send(new OrderShipped($response));
+
+            return redirect()->route('search');
+        }
 }

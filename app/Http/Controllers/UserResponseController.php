@@ -10,10 +10,7 @@ use App\Models\UserResponse;
 
 class UserResponseController extends Controller
 {
-    public function submissionForm()
-    {
-        return view('submission_form');
-    }
 
-    }
+
+}
 

@@ -73,9 +73,9 @@
                         </div>
                     </div>
 
-                   <br>
-                    <input type="submit" value="Найти" class="btn btn-outline-info">
                     <br>
+                    <input type="submit" value="Найти" class="btn btn-outline-info">
+                            <a class="btn btn-outline-info" href="{{route('search')}}">Сбросить фильтры</a>
                     </form>
                     <br>
                     <table class="table">
