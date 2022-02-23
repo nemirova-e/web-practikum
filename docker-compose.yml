@@ -56,6 +56,19 @@ services:
       - insure-bro-network
 
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: insure-bro-rabbitmq-admin
+    restart: always
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - insure-bro-network
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
 networks:
   insure-bro-network:
     driver: bridge
@@ -63,6 +76,8 @@ networks:
 volumes:
   db-data:
   es-data:
+
+
 
 
 
