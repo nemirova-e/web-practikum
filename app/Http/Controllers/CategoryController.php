@@ -10,17 +10,5 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-//    public function submit(CategoryRequest $req) {
-//
-//        $category = new Category();
-//
-//        $category->name = $req->input('name');
-//
-//        $category->save();
-//
-//        return redirect()->route('startpage');
-
-
-
 
 }

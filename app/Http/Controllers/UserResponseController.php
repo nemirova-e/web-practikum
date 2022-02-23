@@ -11,6 +11,5 @@ use App\Models\UserResponse;
 class UserResponseController extends Controller
 {
 
-
 }
 

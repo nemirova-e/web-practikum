@@ -19,10 +19,7 @@ use App\Filters\Models\Product\RateMaxFilter;
 use App\Filters\Models\Product\MonthsMinFilter;
 use App\Filters\Models\Product\MonthsMaxFilter;
 use App\Models\UserResponse;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\OrderShipped;
-
-
+use App\Jobs\RabbitMQJob;
 
 class ProductController extends Controller
 {
@@ -71,7 +68,7 @@ class ProductController extends Controller
 
             $response->saveOrFail();
 
-            Mail::to($product->company->email)->send(new OrderShipped($response));
+            RabbitMQJob::dispatch($response);
 
             return redirect()->route('search');
         }
