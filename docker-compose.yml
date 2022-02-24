@@ -65,9 +65,17 @@ services:
       - 5672:5672
     networks:
       - insure-bro-network
-    environment:
-      - RABBITMQ_DEFAULT_USER=guest
-      - RABBITMQ_DEFAULT_PASS=guest
+
+
+  redis:
+    image: redis:6.2.6
+    container_name: insure-bro-redis
+    restart: always
+    ports:
+      - 6379:6379
+    networks:
+      - insure-bro-network
+
 
 networks:
   insure-bro-network:
