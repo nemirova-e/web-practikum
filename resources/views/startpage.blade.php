@@ -119,7 +119,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @guest
                         @if(Route::has('login'))
-                            <a  class="text-info" href="{{ route('login') }} ">Войти в личный кабинет</a>
+                            <a  class="text-info" href="{{ route('login') }} ">Войти страховому агенту</a>
                         @endif
                         <br>
                         @if(Route::has('register'))
