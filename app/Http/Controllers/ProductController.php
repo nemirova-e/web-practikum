@@ -20,6 +20,8 @@ use App\Filters\Models\Product\MonthsMinFilter;
 use App\Filters\Models\Product\MonthsMaxFilter;
 use App\Models\UserResponse;
 use App\Jobs\RabbitMQJob;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ProductController extends Controller
 {
@@ -71,5 +73,13 @@ class ProductController extends Controller
             RabbitMQJob::dispatch($response);
 
             return redirect()->route('search');
+        }
+
+        function lk () {
+        $user = Auth::user();
+
+        return view ('lk',[
+            'user'=>$user,
+        ]);
         }
 }

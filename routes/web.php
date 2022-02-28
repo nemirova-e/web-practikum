@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'search'])->name('search');
 
-Route::get('/lk', function () {
-    return view('lk');
-})->middleware(['auth'])->name('lk');
+Route::get('/lk',[\App\Http\Controllers\ProductController::class, 'lk'] )->middleware(['auth'])->name('lk');
 
 require __DIR__.'/auth.php';
 
