@@ -21,7 +21,6 @@ use App\Filters\Models\Product\MonthsMaxFilter;
 use App\Models\UserResponse;
 use App\Jobs\RabbitMQJob;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 class ProductController extends Controller
 {
@@ -76,10 +75,13 @@ class ProductController extends Controller
         }
 
         function lk () {
+
         $user = Auth::user();
+        $productsOfThisCompany = Product::where('insurance_company_id','=',$user->insurance_company_id)->get();
 
         return view ('lk',[
             'user'=>$user,
+            'productsOfThisCompany'=>$productsOfThisCompany
         ]);
         }
 }
