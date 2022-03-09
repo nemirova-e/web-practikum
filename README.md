@@ -15,6 +15,9 @@
 * Laravel
 * Docker Compose
 * MariaDB
+* Elasticsearch
+* RabbitMQ
+* Redis
 
 
 ### Команды Docker'а
