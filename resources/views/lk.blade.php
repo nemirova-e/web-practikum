@@ -15,11 +15,17 @@
             <br>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                   Перечень ваших услуг: <br>
+                    <table class="table">
+                        <tr scope="col" class="table-secondary">
+                            <th>Ваши услуги</th>
+                            <th>Просмотры</th>
+                        </tr>
                     @foreach ($productsOfThisCompany as $product)
-                       <b>{{$product->name}}</b>
-                        <br>
+                            <tr class="table-info" >
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->visits()}}</td>
                     @endforeach
+                    </table>
                 </div>
             </div>
         </div>

@@ -41,6 +41,8 @@
                         </tr>
                         <br>
                         <br>
+                        <div> Просмотры данной услуги: {{$visits}} </div>
+                        <br>
                         <form action="{{route ('send_mail',['product'=>$product])}}" method="post">
                         <div class="col-md-4">
                             <label>Фамилия</label>
@@ -75,7 +77,6 @@
                             <input type="submit" class="btn btn-outline-info" value="Отправить заявку">
                             @csrf
                         </form>
-
                        </div>
                 </div>
             </div>

@@ -21,6 +21,7 @@ use App\Filters\Models\Product\MonthsMaxFilter;
 use App\Models\UserResponse;
 use App\Jobs\RabbitMQJob;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -56,8 +57,17 @@ class ProductController extends Controller
 
         public function submissionForm(Product $product) {
 
+        $product_id = $product->id;
+        Cache::rememberForever('visits'.$product_id, function () {
+                return 0;
+            });
+
+        $visits = Cache::increment('visits'.$product_id);
+
         return view('submission_form', [
             'product' => $product,
+            'visits' => $visits,
+
         ]);
         }
 
@@ -74,7 +84,7 @@ class ProductController extends Controller
             return redirect()->route('search');
         }
 
-        function lk () {
+        function auth () {
 
         $user = Auth::user();
         $productsOfThisCompany = Product::where('insurance_company_id','=',$user->insurance_company_id)->get();
@@ -84,4 +94,9 @@ class ProductController extends Controller
             'productsOfThisCompany'=>$productsOfThisCompany
         ]);
         }
-}
+
+
+//            Cache::many
+
+        }
+

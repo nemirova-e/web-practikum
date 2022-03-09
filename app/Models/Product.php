@@ -10,6 +10,7 @@ use App\Search\Searchable;
 use App\Models\InsuranceCompany;
 use App\Models\Category;
 use Pricecurrent\LaravelEloquentFilters\Filterable;
+use Illuminate\Support\Facades\Cache;
 
 
 /**
@@ -42,5 +43,11 @@ class Product extends Model
     public function company()
     {
         return $this->hasOne(InsuranceCompany::class, 'id', 'insurance_company_id');
+    }
+
+    public function visits()
+    {
+        $product_id = $this ->id;
+        return Cache::get('visits'.$product_id, 0);
     }
 }
