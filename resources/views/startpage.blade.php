@@ -78,7 +78,7 @@
                             <a class="btn btn-outline-info" href="{{route('search')}}">Сбросить фильтры</a>
                     </form>
                     <br>
-                    <table class="table">
+                    <table class="table table-hover">
                         <tr scope="col" class="table-secondary">
                             <th>Пакет страхования</th>
                             <th>Процентная ставка,%</th>
@@ -88,7 +88,7 @@
                             <th></th>
                         </tr>
                         @forelse($products as $product)
-                            <tr class="table-info" >
+                            <tr class="table-info">
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->rate }}</td>
                                 <td>{{ $product->months }}</td>

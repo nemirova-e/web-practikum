@@ -22,3 +22,4 @@ require __DIR__.'/auth.php';
 
 Route::get('/submission_form/{product}', [\App\Http\Controllers\ProductController::class, 'submissionForm'])->name('submissionForm');
 Route::post('/send_mail/{product}',[\App\Http\Controllers\ProductController::class,'sendMail'])->name('send_mail');
+Route::get('/lk/add_product',[\App\Http\Controllers\ProductController::class,'addProduct'])->name('add_product');

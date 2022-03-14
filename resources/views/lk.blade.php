@@ -1,8 +1,11 @@
 <x-app-layout>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <div class="p-3 mb-2 bg-info text-white"class="text-secondary">
             {{ __('Личный кабинет страхового агента') }}
-        </h2>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -15,17 +18,20 @@
             <br>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <table class="table">
-                        <tr scope="col" class="table-secondary">
-                            <th>Ваши услуги</th>
-                            <th>Просмотры</th>
+                    <table class="table table-hover">
+                        <tr scope="col"  class="table-secondary">
+                            <th scope="col">Ваши услуги</th>
+                            <th scope="col">Просмотры</th>
                         </tr>
-                    @foreach ($productsOfThisCompany as $product)
-                            <tr class="table-info" >
-                        <td>{{$product->name}}</td>
-                        <td>{{$product->visits()}}</td>
-                    @endforeach
+
+                        @foreach ($productsOfThisCompany as $product)
+                        <tr class="table-info">
+                                <td>{{$product->name}}</td>
+                                <td>{{$product->visits()}}</td>
+                        </tr>
+                        @endforeach
                     </table>
+                    <a href="{{route('add_product')}}" class="btn btn-outline-info">Добавить новый пакет страхования</a>
                 </div>
             </div>
         </div>

@@ -95,8 +95,15 @@ class ProductController extends Controller
         ]);
         }
 
+        function addProduct () {
+        $categories = Category::all();
+        $insurance_companies = InsuranceCompany::all();
 
-//            Cache::many
-
+        return view('add_product',[
+            'categories' => $categories,
+            'insurance_companies' => $insurance_companies
+        ]);
         }
+
+}
 
