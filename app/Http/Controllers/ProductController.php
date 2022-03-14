@@ -25,8 +25,8 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
-    public function search(Request $request, ProductsRepository $repository)
-    {
+    public function search(Request $request, ProductsRepository $repository) {
+
         if ($request->get('q')) {
             $productsQuery = $repository->search($request->get('q'));
         } else {
@@ -55,36 +55,34 @@ class ProductController extends Controller
         ]);
     }
 
-        public function submissionForm(Product $product) {
+    public function submissionForm(Product $product) {
 
         $product_id = $product->id;
         Cache::rememberForever('visits'.$product_id, function () {
                 return 0;
-            });
+        });
 
         $visits = Cache::increment('visits'.$product_id);
 
         return view('submission_form', [
             'product' => $product,
             'visits' => $visits,
+            ]);
+    }
 
-        ]);
-        }
+    public function sendMail (Product $product, Request $request) {
 
-        function sendMail (Product $product, Request $request)
-        {
-            $response = new UserResponse();
-            $response->fill($request->all());
-            $response->product_id = $product->id;
+        $response = new UserResponse();
+        $response->fill($request->all());
+        $response->product_id = $product->id;
+        $response->save();
 
-            $response->saveOrFail();
+        RabbitMQJob::dispatch($response);
 
-            RabbitMQJob::dispatch($response);
+        return redirect()->route('search');
+    }
 
-            return redirect()->route('search');
-        }
-
-        function auth () {
+    public function auth () {
 
         $user = Auth::user();
         $productsOfThisCompany = Product::where('insurance_company_id','=',$user->insurance_company_id)->get();
@@ -92,18 +90,30 @@ class ProductController extends Controller
         return view ('lk',[
             'user'=>$user,
             'productsOfThisCompany'=>$productsOfThisCompany
-        ]);
-        }
+            ]);
+    }
 
-        function addProduct () {
+    public function addProduct () {
+
         $categories = Category::all();
         $insurance_companies = InsuranceCompany::all();
 
         return view('add_product',[
             'categories' => $categories,
-            'insurance_companies' => $insurance_companies
-        ]);
-        }
+            'insurance_companies' => $insurance_companies,
+            ]);
+    }
+
+    public function saveProduct (Request $request,Category $category, InsuranceCompany $insurance_company) {
+
+        $product = new Product();
+        $product->fill($request->all());
+        $product->category_id = $category->id;
+        $product->insurance_company_id = $insurance_company->id;
+        $product->save();
+
+        return redirect()->route('lk');
+    }
 
 }
 

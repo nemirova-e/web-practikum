@@ -30,6 +30,9 @@ class Product extends Model
     use HasFactory;
     use Filterable;
 
+
+    protected $fillable = ['name', 'rate', 'months','category_id','insurance_company_id'];
+
     protected static function newFactory()
     {
         return ProductFactory::new();
@@ -50,4 +53,5 @@ class Product extends Model
         $product_id = $this ->id;
         return Cache::get('visits'.$product_id, 0);
     }
+
 }

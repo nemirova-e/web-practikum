@@ -23,6 +23,7 @@ class UserResponse extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['firstname', 'lastname', 'patronymic', 'phone', 'email', 'message'];
 
     protected static function newFactory()
     {
@@ -34,7 +35,5 @@ class UserResponse extends Model
         return $this->hasOne(Product::class, 'id', 'product_id');
     }
 
-    protected $fillable = [
-        'firstname', 'lastname', 'patronymic', 'phone', 'email', 'message'
-    ];
+
 }

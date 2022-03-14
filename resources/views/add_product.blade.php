@@ -13,7 +13,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
-                        <form action="">
+                        <form action="{{route('save_product')}}" method="post">
                         <div class="col-md-4">
                             <label>Название пакета страхования</label>
                             <input type="text" name="name" class="form-control">
@@ -26,7 +26,7 @@
                         <br>
                         <div class="col-md-4">
                             <label>Количество месяцев</label>
-                            <input type="text" name="monts" class="form-control">
+                            <input type="text" name="months" class="form-control">
                         </div>
                         <br>
                         <div class="col-md-4">
@@ -49,7 +49,8 @@
                                 </select>
                         </div>
                         <br>
-                        <a href="" class="btn btn-outline-info">Добавить пакет страхования</a>
+                        <input type="submit" class="btn btn-outline-info" value="Добавить пакет страхования">
+                            @csrf
                         </form>
                     </div>
                 </div>
