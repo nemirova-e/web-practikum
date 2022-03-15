@@ -104,12 +104,10 @@ class ProductController extends Controller
             ]);
     }
 
-    public function saveProduct (Request $request,Category $category, InsuranceCompany $insurance_company) {
+    public function saveProduct (Request $request) {
 
         $product = new Product();
         $product->fill($request->all());
-        $product->category_id = $category->id;
-        $product->insurance_company_id = $insurance_company->id;
         $product->save();
 
         return redirect()->route('lk');

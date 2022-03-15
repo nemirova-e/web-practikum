@@ -14,32 +14,32 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
                         <form action="{{route('save_product')}}" method="post">
-                        <div class="col-md-4">
-                            <label>Название пакета страхования</label>
-                            <input type="text" name="name" class="form-control">
-                        </div>
-                        <br>
-                        <div class="col-md-4">
-                            <label>Процентная ставка</label>
-                            <input type="text" name="rate" class="form-control">
-                        </div>
-                        <br>
-                        <div class="col-md-4">
-                            <label>Количество месяцев</label>
-                            <input type="text" name="months" class="form-control">
-                        </div>
-                        <br>
-                        <div class="col-md-4">
-                            <label for="category_id">Выбрать категорию страхования</label>
-                            <select name="category_id" id="category_id" class="form-control">
+                            <div class="col-md-4">
+                                <label>Название пакета страхования</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <br>
+                            <div class="col-md-4">
+                                <label>Процентная ставка</label>
+                                <input type="text" name="rate" class="form-control">
+                            </div>
+                            <br>
+                            <div class="col-md-4">
+                                <label>Количество месяцев</label>
+                                <input type="text" name="months" class="form-control">
+                            </div>
+                            <br>
+                            <div class="col-md-4">
+                                <label for="category_id">Выбрать категорию страхования</label>
+                                <select name="category_id" id="category_id" class="form-control">
                                 <option value="">не указано</option>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}" {{ request()->get('category_id') == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
                                 @endforeach
                             </select>
-                        </div>
-                        <br>
-                        <div class="col-md-4">
+                            </div>
+                            <br>
+                            <div class="col-md-4">
                                 <label for="insurance_company_id">Выбрать страховую компанию</label>
                                 <select name="insurance_company_id" id="insurance_company_id" class="form-control">
                                     <option value="">не указано</option>
@@ -47,9 +47,9 @@
                                         <option value="{{$insurance_company->id}}" {{ request()->get('insurance_company_id') == $insurance_company->id ? 'selected' : '' }}>{{$insurance_company->name}}</option>
                                     @endforeach
                                 </select>
-                        </div>
-                        <br>
-                        <input type="submit" class="btn btn-outline-info" value="Добавить пакет страхования">
+                            </div>
+                            <br>
+                            <input type="submit" class="btn btn-outline-info" value="Добавить пакет страхования">
                             @csrf
                         </form>
                     </div>
@@ -57,5 +57,4 @@
             </div>
         </div>
     </div>
-
 </x-app-layout>

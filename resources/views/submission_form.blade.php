@@ -14,30 +14,29 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
-
                         <tr class="table-info" >
                             <th>Выбранный продукт:</th>
-                            <td>{{ $product->name }}</td>
+                            <td>{{$product->name}}</td>
                         </tr>
                         <br>
                         <tr>
                             <th>Процентная ставка:</th>
-                            <td>{{ $product->rate }}</td>
+                            <td>{{$product->rate}}</td>
                         </tr>
                         <br>
                         <tr>
                             <th>Количество месяцев:</th>
-                            <td>{{ $product->months }}</td>
+                            <td>{{$product->months}}</td>
                         </tr>
                         <br>
                         <tr>
                             <th>Категория страхования:</th>
-                            <td>{{ $product->category->name }}</td>
+                            <td>{{$product->category->name}}</td>
                         </tr>
                         <br>
                         <tr>
                             <th>Компания:</th>
-                            <td>{{ $product->company->name }}</td>
+                            <td>{{$product->company->name}}</td>
                         </tr>
                         <br>
                         <br>
@@ -82,6 +81,4 @@
             </div>
         </div>
     </div>
-
-
 </x-app-layout>
