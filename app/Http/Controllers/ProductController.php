@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Products\ProductsRepository;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -108,6 +109,7 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->fill($request->all());
+        $product->insurance_company_id = auth()->user()->insurance_company_id;
         $product->save();
 
         return redirect()->route('lk');

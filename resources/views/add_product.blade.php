@@ -39,16 +39,16 @@
                             </select>
                             </div>
                             <br>
-                            <div class="col-md-4">
-                                <label for="insurance_company_id">Выбрать страховую компанию</label>
-                                <select name="insurance_company_id" id="insurance_company_id" class="form-control">
-                                    <option value="">не указано</option>
-                                    @foreach($insurance_companies as $insurance_company)
-                                        <option value="{{$insurance_company->id}}" {{ request()->get('insurance_company_id') == $insurance_company->id ? 'selected' : '' }}>{{$insurance_company->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <br>
+{{--                            <div class="col-md-4">--}}
+{{--                                <label for="insurance_company_id">Выбрать страховую компанию</label>--}}
+{{--                                <select name="insurance_company_id" id="insurance_company_id" class="form-control">--}}
+{{--                                    <option value="">не указано</option>--}}
+{{--                                    @foreach($insurance_companies as $insurance_company)--}}
+{{--                                        <option value="{{$insurance_company->id}}" {{ request()->get('insurance_company_id') == $insurance_company->id ? 'selected' : '' }}>{{$insurance_company->name}}</option>--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                            <br>--}}
                             <input type="submit" class="btn btn-outline-info" value="Добавить пакет страхования">
                             @csrf
                         </form>

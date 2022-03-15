@@ -31,7 +31,7 @@ class Product extends Model
     use Filterable;
 
 
-    protected $fillable = ['name', 'rate', 'months','category_id','insurance_company_id'];
+    protected $fillable = ['name', 'rate', 'months','category_id'];
 
     protected static function newFactory()
     {
