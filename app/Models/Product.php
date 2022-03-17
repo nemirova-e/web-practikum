@@ -55,7 +55,7 @@ class Product extends Model
         return Cache::get('visits'.$product_id, 0);
     }
 
-    public function response() {
+    public function responses() {
         return $this->hasMany(UserResponse::class,'product_id','id');
     }
 

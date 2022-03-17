@@ -26,3 +26,4 @@ Route::get('/lk/add_product',[\App\Http\Controllers\ProductController::class,'ad
 Route::post('/lk/add_product/save_product',[\App\Http\Controllers\ProductController::class,'saveProduct'])->name('save_product');
 Route::get('/lk/delete_product/{product}',[\App\Http\Controllers\ProductController::class,'deleteProduct'])->name('delete_product');
 Route::get('/lk/edit_product/{product}',[\App\Http\Controllers\ProductController::class,'editProduct'])->name('edit_product');
+Route::post('/lk/edit_product/save_changes/{product}',[\App\Http\Controllers\ProductController::class,'saveChanges'])->name('save_changes');

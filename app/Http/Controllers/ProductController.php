@@ -116,20 +116,29 @@ class ProductController extends Controller
     }
 
     public function deleteProduct (Product $product) {
-        $product->response()->delete();
-        $product->delete();
 
+        $product->responses()->delete();
+        $product->delete();
 
         return view ('delete_product', [
             'product'=> $product,
         ]);
     }
 
-    public function editProduct () {
+    public function editProduct (Product $product) {
+        $categories = Category::all();
 
         return view ('edit_product',[
             'product'=> $product,
+            'categories' => $categories,
         ]);
+    }
+
+    public function saveChanges (Request $request, Product $product) {
+        $product->fill($request->all());
+        $product->save();
+
+        return redirect()->route('lk');
     }
 }
 
