@@ -115,5 +115,21 @@ class ProductController extends Controller
         return redirect()->route('lk');
     }
 
+    public function deleteProduct (Product $product) {
+        $product->response()->delete();
+        $product->delete();
+
+
+        return view ('delete_product', [
+            'product'=> $product,
+        ]);
+    }
+
+    public function editProduct () {
+
+        return view ('edit_product',[
+            'product'=> $product,
+        ]);
+    }
 }
 

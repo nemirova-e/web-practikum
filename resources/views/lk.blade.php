@@ -22,12 +22,20 @@
                         <tr scope="col"  class="table-secondary">
                             <th scope="col">Ваши услуги</th>
                             <th scope="col">Просмотры</th>
+                            <th></th>
+                            <th></th>
                         </tr>
 
                         @foreach ($productsOfThisCompany as $product)
                         <tr class="table-info">
                                 <td>{{$product->name}}</td>
                                 <td>{{$product->visits()}}</td>
+                                <td>
+                                    <a href="{{route('edit_product',['product'=>$product])}}" class="btn btn-outline-info">Редактировать</a>
+                                </td>
+                                <td>
+                                    <a href="{{route('delete_product',['product'=>$product])}}" class="btn btn-outline-info">Удалить</a>
+                                </td>
                         </tr>
                         @endforeach
                     </table>

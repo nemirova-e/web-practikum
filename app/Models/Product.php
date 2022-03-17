@@ -11,6 +11,7 @@ use App\Models\InsuranceCompany;
 use App\Models\Category;
 use Pricecurrent\LaravelEloquentFilters\Filterable;
 use Illuminate\Support\Facades\Cache;
+use App\Models\UserResponse;
 
 
 /**
@@ -52,6 +53,10 @@ class Product extends Model
     {
         $product_id = $this ->id;
         return Cache::get('visits'.$product_id, 0);
+    }
+
+    public function response() {
+        return $this->hasMany(UserResponse::class,'product_id','id');
     }
 
 }

@@ -24,3 +24,5 @@ Route::get('/submission_form/{product}', [\App\Http\Controllers\ProductControlle
 Route::post('/send_mail/{product}',[\App\Http\Controllers\ProductController::class,'sendMail'])->name('send_mail');
 Route::get('/lk/add_product',[\App\Http\Controllers\ProductController::class,'addProduct'])->name('add_product');
 Route::post('/lk/add_product/save_product',[\App\Http\Controllers\ProductController::class,'saveProduct'])->name('save_product');
+Route::get('/lk/delete_product/{product}',[\App\Http\Controllers\ProductController::class,'deleteProduct'])->name('delete_product');
+Route::get('/lk/edit_product/{product}',[\App\Http\Controllers\ProductController::class,'editProduct'])->name('edit_product');
