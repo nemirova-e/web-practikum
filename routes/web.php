@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,15 +16,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\ProductController::class, 'search'])->name('search');
 
-Route::get('/lk',[\App\Http\Controllers\ProductController::class, 'auth'] )->middleware(['auth'])->name('lk');
-
 require __DIR__.'/auth.php';
-
 
 Route::get('/submission_form/{product}', [\App\Http\Controllers\ProductController::class, 'submissionForm'])->name('submissionForm');
 Route::post('/send_mail/{product}',[\App\Http\Controllers\ProductController::class,'sendMail'])->name('send_mail');
-Route::get('/lk/add_product',[\App\Http\Controllers\ProductController::class,'addProduct'])->name('add_product');
-Route::post('/lk/add_product/save_product',[\App\Http\Controllers\ProductController::class,'saveProduct'])->name('save_product');
-Route::get('/lk/delete_product/{product}',[\App\Http\Controllers\ProductController::class,'deleteProduct'])->name('delete_product');
-Route::get('/lk/edit_product/{product}',[\App\Http\Controllers\ProductController::class,'editProduct'])->name('edit_product');
-Route::post('/lk/edit_product/save_changes/{product}',[\App\Http\Controllers\ProductController::class,'saveChanges'])->name('save_changes');
+Route::get('/after-login',[\App\Http\Controllers\Auth\LoginController::class,'afterLogin'])->name('login.afterLogin');
+
+
+Route::prefix('agent')->name('agent.')->group(function () {
+    Route::get('/',[\App\Http\Controllers\Agent\AgentController::class,'index'])->name('index');
+    Route::resource('product', \App\Http\Controllers\Agent\ProductController::class);
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/',[\App\Http\Controllers\Admin\AdminController::class,'index'])->name('index');
+    Route::resource('insurance-company', \App\Http\Controllers\Admin\InsuranceCompanyController::class);
+});

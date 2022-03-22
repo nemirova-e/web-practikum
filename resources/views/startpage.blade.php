@@ -13,6 +13,30 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    @guest
+                        @if(Route::has('login'))
+                            <a  class="text-info" href="{{route('login')}}" class="btn btn-outline-info">Войти</a>
+                        @endif
+                        <br>
+                        @if(Route::has('register'))
+                            <a class="text-info" href="{{route('register')}}" class="btn btn-outline-info">Зарегистрироваться</a>
+                        @endif
+                    @endguest
+                    @auth
+                        @if(Route::has('login.afterLogin'))
+                            <a class="text-info" href="{{route('login.afterLogin')}}" class="btn btn-outline-info">Личный кабинет</a>
+                        @endif
+                    @endauth
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
                         <form action="{{ route('search') }}" method="get">
                             <div class="form-group">
@@ -80,7 +104,7 @@
                     <br>
                     <table class="table table-hover">
                         <tr scope="col" class="table-secondary">
-                            <th>Пакет страхования</th>
+                            <th>Продукт страхования</th>
                             <th>Процентная ставка,%</th>
                             <th>Месяцы</th>
                             <th>Категории</th>
@@ -113,27 +137,5 @@
 
 
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    @guest
-                        @if(Route::has('login'))
-                            <a  class="text-info" href="{{ route('login') }} ">Войти страховому агенту</a>
-                        @endif
-                        <br>
-                        @if(Route::has('register'))
-                            <a class="text-info" href="{{ route('register') }}">Зарегистрироваться</a>
-                        @endif
-                    @endguest
-                    @auth
-                        @if(Route::has('lk'))
-                            <a class="text-info" href="{{ route('lk') }}">Личный кабинет</a>
-                        @endif
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </div>
 
 </x-app-layout>

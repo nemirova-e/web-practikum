@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Products\ProductsRepository;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
 use App\Models\Product;
 use App\Models\InsuranceCompany;
 use App\Models\Category;
@@ -21,7 +16,6 @@ use App\Filters\Models\Product\MonthsMinFilter;
 use App\Filters\Models\Product\MonthsMaxFilter;
 use App\Models\UserResponse;
 use App\Jobs\RabbitMQJob;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
@@ -83,62 +77,62 @@ class ProductController extends Controller
         return redirect()->route('search');
     }
 
-    public function auth () {
+//    public function auth () {
+//
+//        $user = Auth::user();
+//        $productsOfThisCompany = Product::where('insurance_company_id','=',$user->insurance_company_id)->get();
+//
+//        return view ('lk',[
+//            'user'=>$user,
+//            'productsOfThisCompany'=>$productsOfThisCompany
+//            ]);
+//    }
 
-        $user = Auth::user();
-        $productsOfThisCompany = Product::where('insurance_company_id','=',$user->insurance_company_id)->get();
+//    public function addProduct () {
+//
+//        $categories = Category::all();
+//        $insurance_companies = InsuranceCompany::all();
+//
+//        return view('add_product',[
+//            'categories' => $categories,
+//            'insurance_companies' => $insurance_companies,
+//            ]);
+//    }
 
-        return view ('lk',[
-            'user'=>$user,
-            'productsOfThisCompany'=>$productsOfThisCompany
-            ]);
-    }
+//    public function saveProduct (Request $request) {
+//
+//        $product = new Product();
+//        $product->fill($request->all());
+//        $product->insurance_company_id = auth()->user()->insurance_company_id;
+//        $product->save();
+//
+//        return redirect()->route('lk');
+//    }
 
-    public function addProduct () {
-
-        $categories = Category::all();
-        $insurance_companies = InsuranceCompany::all();
-
-        return view('add_product',[
-            'categories' => $categories,
-            'insurance_companies' => $insurance_companies,
-            ]);
-    }
-
-    public function saveProduct (Request $request) {
-
-        $product = new Product();
-        $product->fill($request->all());
-        $product->insurance_company_id = auth()->user()->insurance_company_id;
-        $product->save();
-
-        return redirect()->route('lk');
-    }
-
-    public function deleteProduct (Product $product) {
-
-        $product->responses()->delete();
-        $product->delete();
-
-        return view ('delete_product', [
-            'product'=> $product,
-        ]);
-    }
-
-    public function editProduct (Product $product) {
-        $categories = Category::all();
-
-        return view ('edit_product',[
-            'product'=> $product,
-            'categories' => $categories,
-        ]);
-    }
-
-    public function saveChanges (Request $request, Product $product) {
-        $product->fill($request->all());
-        $product->save();
-
-        return redirect()->route('lk');
-    }
+//    public function deleteProduct (Product $product) {
+//
+//        $product->responses()->delete();
+//        $product->delete();
+//
+//        return view ('delete_product', [
+//            'product'=> $product,
+//        ]);
+//    }
+//
+//    public function editProduct (Product $product) {
+//        $categories = Category::all();
+//
+//        return view ('edit_product',[
+//            'product'=> $product,
+//            'categories' => $categories,
+//        ]);
+//    }
+//
+//    public function saveChanges (Request $request, Product $product) {
+//        $product->fill($request->all());
+//        $product->save();
+//
+//        return redirect()->route('lk');
+//    }
 }
 

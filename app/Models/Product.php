@@ -7,12 +7,8 @@ use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Search\Searchable;
-use App\Models\InsuranceCompany;
-use App\Models\Category;
 use Pricecurrent\LaravelEloquentFilters\Filterable;
 use Illuminate\Support\Facades\Cache;
-use App\Models\UserResponse;
-
 
 /**
  * @property int $id

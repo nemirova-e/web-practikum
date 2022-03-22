@@ -15,4 +15,13 @@ use Illuminate\Database\Eloquent\Model;
 class InsuranceCompany extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'email',
+    ];
+
+    public function products() {
+        return $this->hasMany(Product::class,'insurance_company_id','id');
+    }
 }

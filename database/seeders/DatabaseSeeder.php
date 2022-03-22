@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             CategoriesTableSeeder::class,
             InsuranceCompaniesTableSeeder::class,
             ProductsTableSeeder::class,
-            UsersResponsesSeeder::class
+            UsersResponsesSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

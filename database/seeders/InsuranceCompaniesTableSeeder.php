@@ -24,7 +24,8 @@ class InsuranceCompaniesTableSeeder extends Seeder
                 'Страховая компания ОСОГО',
                 'Страховая компания ЮГОР',
                 'Страховой Дом',
-
+                'Страховая компания Застрахую все',
+                'Страховая компания номер 1',
             ];
 
             foreach ($insurance_companies as $insurance_company) {
