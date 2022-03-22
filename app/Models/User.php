@@ -48,4 +48,9 @@ class User extends Authenticatable
         return $this->hasOne(InsuranceCompany::class, 'id','insurance_company_id');
 
     }
+
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
 }

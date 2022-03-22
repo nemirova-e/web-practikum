@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <x-slot name="header">
         <div class="p-3 mb-2 bg-info text-white"class="text-secondary">
             {{ __('Личный кабинет страхового агента | Информация о страховом продукте') }}

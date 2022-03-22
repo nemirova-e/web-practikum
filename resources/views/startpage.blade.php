@@ -1,6 +1,4 @@
 <x-app-layout>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <x-slot name="header">
         <div class="p-3 mb-2 bg-info text-white"class="text-secondary">
@@ -32,7 +30,6 @@
         </div>
     </div>
 
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -40,18 +37,10 @@
                     <div class="container">
                         <form action="{{ route('search') }}" method="get">
                             <div class="form-group">
-                                <input
-                                    type="text"
-                                    name="q"
-                                    class="form-control"
-                                    placeholder="Я ищу..."
-                                    value="{{ request('q') }}"
-                                />
+                                <input type="text" name="q"  class="form-control" placeholder="Я ищу..." value="{{ request('q') }}"/>
                             </div>
-
                         <br>
                         <br>
-
                         <div class="row">
                         <div class="col-md-4">
                             <label for="insurance_company_id">Страховые компании</label>
@@ -134,8 +123,4 @@
             </div>
         </div>
     </div>
-
-
-
-
 </x-app-layout>
