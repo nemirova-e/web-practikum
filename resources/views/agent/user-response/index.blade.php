@@ -16,15 +16,20 @@
                             <th scope="col">Название продукта</th>
                             <th></th>
                         </tr>
-                        @foreach ($userResponses as $response)
+                        @forelse ($userResponses as $response)
                             <tr class="table-info">
                                 <td>{{$response->product->name}}</td>
                                 <td>
                                     <a href="{{route('agent.user-response.show',['user_response'=>$response])}}" class="btn btn-outline-info">Детализация</a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="6">no data</td>
+                            </tr>
+                        @endforelse
                     </table>
+                    <a href="{{route('agent.index')}}" class="btn btn-outline-info">Вернуться на главную страницу</a>
                 </div>
             </div>
         </div>

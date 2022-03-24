@@ -15,7 +15,7 @@
                     <br>
                     <table class="table table-hover">
                         <tr scope="col"  class="table-secondary">
-                            <th scope="col">Ваши услуги</th>
+                            <th scope="col">Продукты страхования</th>
                             <th scope="col">Просмотры</th>
                             <th></th>
                         </tr>
@@ -31,12 +31,13 @@
                                 <form action="{{route('agent.product.destroy',['product'=>$product])}}" method="POST>
                                     @method('DELETE')
                                     @csrf
-                                    <input type="sumbit" value="Удалить" class="btn btn-outline-info">
+                                    <input type="submit"  class="btn btn-outline-info" value="Удалить">
                                 </form>
                             </td>
                         </tr>
                         @endforeach
                     </table>
+                    <a href="{{route('agent.index')}}" class="btn btn-outline-info">Вернуться на главную страницу</a>
                 </div>
             </div>
         </div>

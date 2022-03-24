@@ -16,6 +16,7 @@
                 <b>Email:</b>
                 {{$company->email}}
             </div>
+            <a href="{{route('admin.insurance-company.index')}}" class="btn btn-outline-info">Вернуться назад</a>
         </div>
     </div>
 </x-app-layout>

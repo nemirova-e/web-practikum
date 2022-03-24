@@ -13,8 +13,8 @@
                     Вы вошли в личный кабинет как <b>{{$user->company->name}}</b>
                     <br>
                     <br>
-                    <a href="{{route('agent.product.index')}}" class="btn btn-outline-info">Список страховых продуктов</a>
-                    <a href="{{route('agent.user-response.index')}}" class="btn btn-outline-info">Посмотреть отклики на страховые продукты</a>
+                    <a href="{{route('agent.product.index')}}" class="btn btn-outline-info">Страховые продукты</a>
+                    <a href="{{route('agent.user-response.index')}}" class="btn btn-outline-info">Отклики</a>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\ProductVisitsService;
 use Carbon\Carbon;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -47,8 +48,9 @@ class Product extends Model
 
     public function visits()
     {
-        $product_id = $this ->id;
-        return Cache::get('visits'.$product_id, 0);
+//        $product_id = $this ->id;
+//        return Cache::get('visits'.$product_id, 0);
+        return ProductVisitsService::get($this->id);
     }
 
     public function responses() {

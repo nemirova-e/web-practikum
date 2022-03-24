@@ -24,6 +24,8 @@
                     @method('PUT')
                     @csrf
                 </form>
+                <br>
+                <a href="{{route('admin.insurance-company.index')}}" class="btn btn-outline-info">Вернуться назад</a>
             </div>
         </div>
     </div>

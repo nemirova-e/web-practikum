@@ -47,6 +47,8 @@
                     <input type="submit" class="btn btn-outline-info" value="Добавить продукт страхования">
                     @csrf
                 </form>
+                    <br>
+                    <a href="{{route('agent.product.index')}}" class="btn btn-outline-info">Вернуться назад</a>
             </div>
         </div>
     </div>

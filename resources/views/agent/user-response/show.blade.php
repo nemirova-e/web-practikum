@@ -32,6 +32,7 @@
                 <b>Комментарий:</b>
                 {{$response->message}}
             </div>
+            <a href="{{route('agent.user-response.index')}}" class="btn btn-outline-info">Вернуться назад</a>
         </div>
     </div>
 </x-app-layout>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Products\ProductsRepository;
+use App\Services\ProductVisitsService;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\InsuranceCompany;
@@ -52,12 +53,13 @@ class ProductController extends Controller
 
     public function submissionForm(Product $product) {
 
-        $product_id = $product->id;
-        Cache::rememberForever('visits'.$product_id, function () {
-                return 0;
-        });
-
-        $visits = Cache::increment('visits'.$product_id);
+//        $product_id = $product->id;
+//        Cache::rememberForever('visits'.$product_id, function () {
+//            return 0;
+//        });
+//
+//        $visits = Cache::increment('visits'.$product_id);
+        $visits = ProductVisitsService::increment($product->id);
 
         return view('submission_form', [
             'product' => $product,

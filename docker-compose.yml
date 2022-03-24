@@ -76,6 +76,15 @@ services:
     networks:
       - insure-bro-network
 
+  mailhog:
+    image: mailhog/mailhog
+    container_name: insure-bro-mailhog
+    restart: always
+    ports:
+      - 8025:8025
+    networks:
+      - insure-bro-network
+
 
 networks:
   insure-bro-network:

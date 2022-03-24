@@ -39,6 +39,8 @@
                     @method('PUT')
                     @csrf
                 </form>
+                <br>
+                <a href="{{route('agent.product.index')}}" class="btn btn-outline-info">Вернуться назад</a>
             </div>
         </div>
     </div>

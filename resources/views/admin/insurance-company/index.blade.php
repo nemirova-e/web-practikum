@@ -11,6 +11,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                 <a href="{{route('admin.insurance-company.create')}}" class="btn btn-outline-info">Добавить новую компанию</a>
+                    <br>
+                    <br>
+                    <a href="{{route('admin.index')}}" class="btn btn-outline-info">Вернуться на главную страницу</a>
                 </div>
             </div>
             <br>
@@ -31,15 +34,16 @@
                             <a href="{{route('admin.insurance-company.show', ['insurance_company' => $company])}}" class="btn btn-outline-info">Детализация</a>
                             <br>
                             <br>
-                            <form action="{{route('admin.insurance-company.destroy', ['insurance_company' => $company])}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <input type="submit" value="Удалить" class="btn btn-outline-info">
-                            </form>
+{{--                            <form action="{{route('admin.insurance-company.destroy', ['insurance_company' => $company])}}" method="POST">--}}
+{{--                            @method('DELETE')--}}
+{{--                            @csrf--}}
+{{--                            <input type="submit" value="Удалить" class="btn btn-outline-info">--}}
+{{--                            </form>--}}
                             </td>
                         </tr>
                     @endforeach
                     </table>
+                    <br>
                 </div>
             </div>
         </div>

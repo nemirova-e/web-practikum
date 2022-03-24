@@ -40,6 +40,6 @@ class OrderShipped extends Mailable
         return $this->view('send_mail',[
             'response' => $this->response
         ])
-            ->from('zastrahui-bratuhu@example.com', 'Маркетплейс Застрахуй братуху');
+        ->from('zastrahui-bratuhu@example.com', 'Маркетплейс Застрахуй братуху');
     }
 }

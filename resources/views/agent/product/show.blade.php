@@ -24,6 +24,7 @@
                <b>Категория страхования:</b>
                {{$product->category->name}}
            </div>
+            <a href="{{route('agent.product.index')}}" class="btn btn-outline-info">Вернуться назад</a>
         </div>
     </div>
 </x-app-layout>

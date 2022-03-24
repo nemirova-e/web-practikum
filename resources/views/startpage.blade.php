@@ -11,30 +11,23 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    @guest
-                        @if(Route::has('login'))
-                            <a  class="text-info" href="{{route('login')}}" class="btn btn-outline-info">Войти</a>
-                        @endif
-                        <br>
-                        @if(Route::has('register'))
-                            <a class="text-info" href="{{route('register')}}" class="btn btn-outline-info">Зарегистрироваться</a>
-                        @endif
-                    @endguest
-                    @auth
-                        @if(Route::has('login.afterLogin'))
-                            <a class="text-info" href="{{route('login.afterLogin')}}" class="btn btn-outline-info">Личный кабинет</a>
-                        @endif
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
+                        @guest
+                            @if(Route::has('login'))
+                                <a  class="text-info" href="{{route('login')}}" class="btn btn-outline-info">Войти</a>
+                            @endif
+                            <br>
+                            @if(Route::has('register'))
+                                <a class="text-info" href="{{route('register')}}" class="btn btn-outline-info">Зарегистрироваться</a>
+                            @endif
+                        @endguest
+                        @auth
+                            @if(Route::has('login.afterLogin'))
+                                <a class="text-info" href="{{route('login.afterLogin')}}" class="btn btn-outline-info">Личный кабинет</a>
+                            @endif
+                        @endauth
+                            <br>
+                            <br>
                         <form action="{{ route('search') }}" method="get">
                             <div class="form-group">
                                 <input type="text" name="q"  class="form-control" placeholder="Я ищу..." value="{{ request('q') }}"/>
