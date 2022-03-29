@@ -24,6 +24,10 @@ COPY ./ /var/www
 COPY --chown=$user:$user  . /var/www
 WORKDIR /var/www
 
+RUN curl -L https://cs.symfony.com/download/php-cs-fixer-v3.phar -o php-cs-fixer && \
+    chmod a+x php-cs-fixer && \
+    mv php-cs-fixer /usr/local/bin/php-cs-fixer
+
 USER $user
 
 CMD ["sh", "-c", "cp -n .env.example .env && composer install && php artisan key:generate && php-fpm"]
