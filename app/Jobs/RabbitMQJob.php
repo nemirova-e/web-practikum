@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Jobs;
 
 use App\Http\Controllers\ProductController;
@@ -16,7 +18,10 @@ use App\Models\Product;
 
 class RabbitMQJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Create a new job instance.
@@ -45,5 +50,4 @@ class RabbitMQJob implements ShouldQueue
         $product = $this->response->product;
         Mail::to($product->company->email)->send(new OrderShipped($this->response));
     }
-
 }

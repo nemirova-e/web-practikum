@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Carbon\Carbon;
@@ -34,6 +36,4 @@ class UserResponse extends Model
     {
         return $this->hasOne(Product::class, 'id', 'product_id');
     }
-
-
 }

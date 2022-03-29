@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -10,7 +12,8 @@ use App\Models\UserResponse;
 
 class OrderShipped extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Экземпляр заказа.
@@ -37,7 +40,7 @@ class OrderShipped extends Mailable
      */
     public function build()
     {
-        return $this->view('send_mail',[
+        return $this->view('send_mail', [
             'response' => $this->response
         ])
         ->from('zastrahui-bratuhu@example.com', 'Маркетплейс Застрахуй братуху');

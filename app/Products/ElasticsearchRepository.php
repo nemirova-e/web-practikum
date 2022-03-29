@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Products;
 
@@ -8,7 +9,6 @@ use Elasticsearch\Client;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Collection;
-
 
 class ElasticsearchRepository implements ProductsRepository
 {
@@ -25,7 +25,7 @@ class ElasticsearchRepository implements ProductsRepository
     }
     private function searchOnElasticsearch(string $query = ''): array
     {
-        $model = new Product;
+        $model = new Product();
         $items = $this->elasticsearch->search([
             'index' => $model->getSearchIndex(),
             'type' => $model->getSearchType(),

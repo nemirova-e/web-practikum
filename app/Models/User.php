@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -21,7 +23,9 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -55,10 +59,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function company () {
-
-        return $this->hasOne(InsuranceCompany::class, 'id','insurance_company_id');
-
+    public function company()
+    {
+        return $this->hasOne(InsuranceCompany::class, 'id', 'insurance_company_id');
     }
 
     public function hasRole(string $role): bool

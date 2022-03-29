@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -47,7 +49,7 @@ class InsuranceCompanyController extends Controller
 
     public function edit(InsuranceCompany $insuranceCompany)
     {
-        return view ('admin.insurance-company.edit',[
+        return view('admin.insurance-company.edit', [
             'company' => $insuranceCompany
         ]);
     }
@@ -59,7 +61,7 @@ class InsuranceCompanyController extends Controller
         $insuranceCompany->saveOrFail();
 
         return redirect()->route('admin.insurance-company.index')
-            ->with('success','Компания успешно отредактирована!');
+            ->with('success', 'Компания успешно отредактирована!');
     }
 
     public function destroy(InsuranceCompany $insuranceCompany)
@@ -67,11 +69,9 @@ class InsuranceCompanyController extends Controller
         if ($insuranceCompany->products()->count() === 0) {
             $insuranceCompany->deleteOrFail();
             return redirect()->route('admin.insurance-company.index');
-        }
-        else {
+        } else {
             return redirect()->route('admin.insurance-company.index')
                 ->with('error', 'Компания имеет продукты!');
         }
     }
-
 }

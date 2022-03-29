@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 /**
  * @property int $id
  * @property string $name
@@ -21,7 +24,8 @@ class InsuranceCompany extends Model
         'email',
     ];
 
-    public function products() {
-        return $this->hasMany(Product::class,'insurance_company_id','id');
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'insurance_company_id', 'id');
     }
 }

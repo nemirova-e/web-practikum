@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use App\Models\Product;
@@ -41,8 +43,7 @@ class ReindexCommand extends Command
     {
         $this->info('Indexing all articles. This might take a while...');
         /** @var Product $product */
-        foreach (Product::cursor() as $product)
-        {
+        foreach (Product::cursor() as $product) {
             $this->elasticsearch->index([
                 'index' => $product->getSearchIndex(),
                 'type' => $product->getSearchType(),
@@ -54,5 +55,3 @@ class ReindexCommand extends Command
         $this->info('\nDone!');
     }
 }
-
-

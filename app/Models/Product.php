@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Services\ProductVisitsService;
@@ -53,8 +55,8 @@ class Product extends Model
         return ProductVisitsService::get($this->id);
     }
 
-    public function responses() {
-        return $this->hasMany(UserResponse::class,'product_id','id');
+    public function responses()
+    {
+        return $this->hasMany(UserResponse::class, 'product_id', 'id');
     }
-
 }

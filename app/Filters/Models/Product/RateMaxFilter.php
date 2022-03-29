@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filters\Models\Product;
 
 use App\Filters;
@@ -22,6 +24,6 @@ class RateMaxFilter extends AbstractEloquentFilter
 
     public function apply(Builder $query): Builder
     {
-        return $query->where('rate','<=', $this->rate_max);
+        return $query->where('rate', '<=', $this->rate_max);
     }
 }

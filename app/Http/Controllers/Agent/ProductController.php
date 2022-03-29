@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Agent;
 
 use App\Http\Controllers\Controller;
@@ -12,7 +14,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $productsOfThisCompany = Product::where('insurance_company_id','=',(Auth::user())->insurance_company_id)->get();
+        $productsOfThisCompany = Product::where('insurance_company_id', '=', (Auth::user())->insurance_company_id)->get();
 
         return view('agent.product.index', [
             'productsOfThisCompany'=>$productsOfThisCompany,
@@ -22,7 +24,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view ('agent.product.create',[
+        return view('agent.product.create', [
             'categories' => Category::all(),
         ]);
     }
@@ -50,7 +52,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view ('agent.product.show',[
+        return view('agent.product.show', [
             'product' => $product,
         ]);
     }
@@ -58,7 +60,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return view('agent.product.edit',[
+        return view('agent.product.edit', [
             'product' => $product,
             'categories' => Category::all(),
         ]);
@@ -71,7 +73,7 @@ class ProductController extends Controller
         $product->saveOrFail();
 
         return redirect()->route('agent.product.index')
-            ->with('success','Продукт успешно отредактирован!');
+            ->with('success', 'Продукт успешно отредактирован!');
     }
 
 
@@ -80,6 +82,5 @@ class ProductController extends Controller
         $product->responses()->deleteOrFail();
 
         return redirect()->route('agent.product.index');
-
     }
 }

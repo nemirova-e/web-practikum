@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Products\ProductsRepository;
@@ -21,8 +23,8 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
-    public function search(Request $request, ProductsRepository $repository) {
-
+    public function search(Request $request, ProductsRepository $repository)
+    {
         if ($request->get('q')) {
             $productsQuery = $repository->search($request->get('q'));
         } else {
@@ -51,7 +53,8 @@ class ProductController extends Controller
         ]);
     }
 
-    public function submissionForm(Product $product) {
+    public function submissionForm(Product $product)
+    {
 
 //        $product_id = $product->id;
 //        Cache::rememberForever('visits'.$product_id, function () {
@@ -67,8 +70,8 @@ class ProductController extends Controller
             ]);
     }
 
-    public function sendMail (Product $product, Request $request) {
-
+    public function sendMail(Product $product, Request $request)
+    {
         $response = new UserResponse();
         $response->fill($request->all());
         $response->product_id = $product->id;
@@ -78,6 +81,4 @@ class ProductController extends Controller
 
         return redirect()->route('search');
     }
-
 }
-
