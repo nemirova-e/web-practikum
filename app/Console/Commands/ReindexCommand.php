@@ -16,14 +16,19 @@ class ReindexCommand extends Command
      * @var string
      */
     protected $signature = 'search:reindex';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Indexes all articles to Elasticsearch';
-    /** @var \Elasticsearch\Client */
+
+    /**
+     * @var \Elasticsearch\Client
+     */
     private $elasticsearch;
+
     /**
      * Create a new command instance.
      *
@@ -34,6 +39,7 @@ class ReindexCommand extends Command
         parent::__construct();
         $this->elasticsearch = $elasticsearch;
     }
+
     /**
      * Execute the console command.
      *
@@ -42,7 +48,10 @@ class ReindexCommand extends Command
     public function handle()
     {
         $this->info('Indexing all articles. This might take a while...');
-        /** @var Product $product */
+
+        /**
+         * @var Product $product
+         */
         foreach (Product::cursor() as $product) {
             $this->elasticsearch->index([
                 'index' => $product->getSearchIndex(),
