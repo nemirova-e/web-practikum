@@ -22,7 +22,6 @@ require __DIR__.'/auth.php';
 Route::get('/submission_form/{product}', [\App\Http\Controllers\ProductController::class, 'submissionForm'])->name('submissionForm');
 Route::post('/send_mail/{product}', [\App\Http\Controllers\ProductController::class,'sendMail'])->name('send_mail');
 
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/after-login', [\App\Http\Controllers\Auth\LoginController::class,'afterLogin'])
         ->name('login.afterLogin');

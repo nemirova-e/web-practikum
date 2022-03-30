@@ -18,6 +18,7 @@
 * Elasticsearch
 * RabbitMQ
 * Redis
+* MailHog
 
 
 ### Команды Docker'а
@@ -44,5 +45,16 @@ php-cs-fixer fix tests
 php-cs-fixer fix routes
 
 ```
+Чтобы отправить email
+```sh
+php artisan rabbitmq:consume 
+```
+
+Чтобы посмотреть email, нужно открыть в браузере mailhog
+```sh
+ http://localhost:8025/
+```
+
+
 
 
