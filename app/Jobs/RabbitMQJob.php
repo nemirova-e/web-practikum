@@ -38,7 +38,7 @@ class RabbitMQJob implements ShouldQueue
      */
     public function __construct(UserResponse $response)
     {
-        $this->response=$response;
+        $this->response = $response;
     }
 
     /**
