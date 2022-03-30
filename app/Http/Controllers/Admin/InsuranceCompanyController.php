@@ -69,9 +69,9 @@ class InsuranceCompanyController extends Controller
         if ($insuranceCompany->products()->count() === 0) {
             $insuranceCompany->deleteOrFail();
             return redirect()->route('admin.insurance-company.index');
-        } else {
-            return redirect()->route('admin.insurance-company.index')
-                ->with('error', 'Компания имеет продукты!');
         }
+
+            return redirect()->route('admin.insurance-company.index')
+            ->with('error', 'Компания имеет продукты!');
     }
 }
