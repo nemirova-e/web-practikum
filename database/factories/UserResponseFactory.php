@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\UserResponse;
@@ -17,14 +19,14 @@ class UserResponseFactory extends Factory
      */
     public function definition()
     {
-                return [
+        return [
                     'firstname' => $this->faker->firstName(),
                     'lastname' => $this->faker->lastName(),
                     'patronymic' => $this->faker->lastName(),
                     'email' => $this->faker->email(),
                     'phone' => $this->faker->e164PhoneNumber(),
                     'message' => $this->faker->text($maxNbChars = 200),
-                    'product_id' => $this->faker->numberBetween(1,10),
+                    'product_id' => $this->faker->numberBetween(1, 10),
                 ];
     }
 }

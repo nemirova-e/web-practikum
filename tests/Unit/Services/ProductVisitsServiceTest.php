@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Services;
 
 use App\Services\ProductVisitsService;
@@ -13,7 +15,7 @@ class ProductVisitsServiceTest extends TestCase
         $productId = 23234;
         Cache::shouldReceive('get')
             ->once()
-            ->withArgs(fn($key) => $key === 'visits' . $productId)
+            ->withArgs(fn ($key) => $key === 'visits' . $productId)
             ->andReturn(203);
 
         $visits = ProductVisitsService::get($productId);
@@ -26,7 +28,7 @@ class ProductVisitsServiceTest extends TestCase
         $productId = 23234;
         Cache::shouldReceive('get')
             ->once()
-            ->withArgs(fn($key) => $key === 'visits' . $productId)
+            ->withArgs(fn ($key) => $key === 'visits' . $productId)
             ->andReturn(0);
 
         $visits = ProductVisitsService::get($productId);

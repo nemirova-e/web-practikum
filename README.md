@@ -35,4 +35,14 @@ php artisan test
 ```sh
  http://localhost:8000/
 ```
+Чтобы запустить автоматическое форматирование кода
+```sh
+docker-compose exec app bash
+php-cs-fixer fix app
+php-cs-fixer fix database
+php-cs-fixer fix tests
+php-cs-fixer fix routes
+
+```
+
 

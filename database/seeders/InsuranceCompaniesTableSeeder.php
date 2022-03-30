@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -15,8 +17,7 @@ class InsuranceCompaniesTableSeeder extends Seeder
      */
     public function run()
     {
-
-            $insurance_companies = [
+        $insurance_companies = [
                 'Страховая компания Мир',
                 'Первая страховая компания',
                 'Лучшая страховая компания',
@@ -28,11 +29,11 @@ class InsuranceCompaniesTableSeeder extends Seeder
                 'Страховая компания номер 1',
             ];
 
-            foreach ($insurance_companies as $insurance_company) {
-                DB::table('insurance_companies')->insert([
+        foreach ($insurance_companies as $insurance_company) {
+            DB::table('insurance_companies')->insert([
                     'name' => $insurance_company,
                     'email' => Str::random(10).'@gmail.com',
                 ]);
-            }
+        }
     }
 }

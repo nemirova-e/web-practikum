@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Database\Seeders;
 
@@ -27,11 +28,11 @@ class UserSeeder extends Seeder
             'agent'];
 
         foreach ($roles as $role) {
-        DB::table('users')->insert([
+            DB::table('users')->insert([
             'name' => ($role === 'admin') ? 'admin' : (Str::random(10)),
             'email' => ($role === 'admin') ? 'admin@gmail.com' : (Str::random(10) . '@gmail.com'),
             'password' => Hash::make('testtest'),
-            'insurance_company_id' => ($role === 'admin') ? null : (rand(1,9)),
+            'insurance_company_id' => ($role === 'admin') ? null : (rand(1, 9)),
             'role' => $role
             ]);
         }
