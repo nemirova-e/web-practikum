@@ -30,8 +30,9 @@ class RabbitMQJob implements ShouldQueue
      */
 
     protected UserResponse $response;
+
     /**
-     * Создать новый экземпляр задания.
+     * Create a new job instance.
      * @param App/Models/UserResponse $response
      * @return void
      */
