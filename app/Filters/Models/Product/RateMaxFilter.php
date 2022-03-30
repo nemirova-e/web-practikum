@@ -10,9 +10,9 @@ use Pricecurrent\LaravelEloquentFilters\AbstractEloquentFilter;
 
 class RateMaxFilter extends AbstractEloquentFilter
 {
-    protected $rate_max;
+    protected ?int $rate_max = null;
 
-    public function __construct($rate_max)
+    public function __construct(?int $rate_max)
     {
         $this->rate_max = $rate_max;
     }

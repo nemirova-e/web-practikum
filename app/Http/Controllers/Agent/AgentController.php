@@ -14,7 +14,7 @@ class AgentController extends Controller
         $user = Auth::user();
 
         return view('agent.index', [
-            'user'=>$user,
+            'user' => $user,
         ]);
     }
 }

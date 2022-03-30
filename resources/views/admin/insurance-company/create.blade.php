@@ -21,12 +21,12 @@
                 <form action="{{route('admin.insurance-company.store')}}" method="POST">
                     <div class="col-md-4">
                         <label for="name">Название страховой компании</label>
-                        <input type="text" name="name" id="name" class="form-control"/>
+                        <input type="text" name="name" id="name" class="form-control" value="{{ old("name") }}"/>
                     </div>
                     <br>
                     <div class="col-md-4">
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" class="form-control"/>
+                        <input type="text" name="email" id="email" class="form-control" value="{{ old("email") }}"/>
                     </div>
                     <br>
                     <input type="submit" value="Создать компанию" class="btn btn-outline-info">
