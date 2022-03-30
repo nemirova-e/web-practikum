@@ -16,14 +16,14 @@ class OrderShipped extends Mailable
     use SerializesModels;
 
     /**
-     * Экземпляр заказа.
+     * Сopy of the order.
      *
      * @var \App\Models\UserResponse
      */
     protected $response;
 
     /**
-     * Создать экземпляр нового сообщения.
+     * Create a new message instance.
      *
      * @param  \App\Models\UserResponse $response
      * @return void
@@ -34,11 +34,11 @@ class OrderShipped extends Mailable
     }
 
     /**
-     * Создать сообщение.
+     * Create message.
      *
      * @return $this
      */
-    public function build()
+    public function build():Mailable
     {
         return $this->view('send_mail', [
             'response' => $this->response
